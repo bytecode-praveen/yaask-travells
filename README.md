@@ -1,2 +1,2 @@
 # yaask-travells
-Travell Website
+Travel Website frontend and backend
