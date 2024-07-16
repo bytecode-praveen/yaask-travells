@@ -85,7 +85,23 @@ const houseSchema = new mongoose.Schema({
     ratings: {
         type: Number,
         default: null
-    }
+    }, 
+	rooms: [
+        {
+            roomType: {
+                type: String
+            },
+            priceAfterTaxes: {
+				type: Number
+			},
+			basePrice: {
+				type: Number
+			},
+            amenities: {
+                type: Array
+            }
+        }
+    ]
 
 }, { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } });
 
