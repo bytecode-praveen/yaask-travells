@@ -15,12 +15,11 @@ import { API } from "../../backend";
 import { parseISO } from "date-fns";
 
 /* eslint-disable react/prop-types */
-const ReservationCard = ({ listingData }) => {
+const ReservationCard = ({ listingData, selectedRoom }) => {
   // refs
   const calendarRef = useRef();
   const dropdownRef = useRef();
   const user = useSelector((state) => state.user.userDetails);
-
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -38,14 +37,12 @@ const ReservationCard = ({ listingData }) => {
   const [reservations, setReservations] = useState([]);
   // pricing state
   const [reservationBasePrice, setReservationBasePrice] = useState(
-    listingData?.basePrice
+    selectedRoom?.basePrice
   );
   const [tax, setTax] = useState(
-    listingData?.priceAfterTaxes - listingData?.basePrice
+    selectedRoom?.priceAfterTaxes - selectedRoom?.basePrice
   );
-  const [authorEarned, setAuthorEarned] = useState(
-    listingData?.authorEarnedPrice
-  );
+ 
 
   // dates saving and showing to the dateRange calendar calculation here
   const [selectedDates, setSelectedDates] = useState([
@@ -59,7 +56,7 @@ const ReservationCard = ({ listingData }) => {
   // calculating how many nights guest is staying
   const [nightsStaying, setNightStaying] = useState(1);
 
-  console.log(nightsStaying, typeof nightsStaying, "nights");
+  // console.log(nightsStaying, typeof nightsStaying, "nights");
 
   // formatted dates to save in the db
   const formattedStartDate = selectedDates[0]?.startDate?.toISOString();
@@ -69,40 +66,28 @@ const ReservationCard = ({ listingData }) => {
   const localStartDate = new Date(formattedStartDate).toLocaleDateString();
   const localEndDate = new Date(formattedEndDate).toLocaleDateString();
 
-  console.log(
-    new Date(formattedStartDate).toLocaleDateString(),
-    localStartDate,
-    localEndDate,
-    "dates"
-  );
+  // console.log(
+  //   new Date(formattedStartDate).toLocaleDateString(),
+  //   localStartDate,
+  //   localEndDate,
+  //   "dates"
+  // );
   // Function to handle date selection
   const handleSelect = (ranges) => {
     setSelectedDates([ranges.selection]);
   };
 
-  // booking function
-  const orderNumber = localStorage.getItem("orderId");
-  const orderId = orderNumber ? orderNumber : 1;
-  console.log(orderId);
+
   const handleBooking = () => {
-    navigate(
-      `/book/stays/${listingData._id}?numberOfGuests=${totalGuest}&nightStaying=${nightsStaying}&checkin=${formattedStartDate}&checkout=${formattedEndDate}&orderId=${orderId}`
-    );
+    console.log("Selected room:" +selectedRoom.roomType);
+    console.log("nightsStaying:" +nightsStaying);
+    console.log("totalGuest:" +totalGuest);
+    console.log("reservationBasePrice:" +reservationBasePrice);
+    console.log("selectedDates:" + localStartDate + " to "+ localEndDate);
   };
 
   // getting saved reservations data
-  useEffect(() => {
-    (async () => {
-      const res = await axios.post(`${API}reservations/get_reservations`, {
-        id: listingData?._id,
-      });
-
-      if (res.status === 200) {
-        setReservations(res.data);
-      }
-      console.log(res, "reservation data");
-    })();
-  }, [listingData?._id]);
+ 
 
   // calculation of price for reservations
   // side effects and logic
@@ -113,19 +98,16 @@ const ReservationCard = ({ listingData }) => {
     // turning miliseconds into days
     const calculatedNights = daysInMiliSec / (1000 * 60 * 60 * 24);
     const finalNights = calculatedNights === 0 ? 1 : calculatedNights;
-    const calculatedBasePrice = listingData?.basePrice * finalNights;
+    const calculatedBasePrice = selectedRoom?.basePrice * finalNights;
     // tax is 14%
     const calculatingTaxes = Math.round((calculatedBasePrice * 14) / 100);
-    // motel service charge is 3%
-    const calculateAuthorEarned =
-      calculatedBasePrice - Math.round((calculatedBasePrice * 3) / 100);
+    
 
     // setting states
     setReservationBasePrice(calculatedBasePrice);
     setTax(calculatingTaxes);
-    setAuthorEarned(calculateAuthorEarned);
     setNightStaying(calculatedNights);
-  }, [selectedDates, listingData?.basePrice]);
+  }, [selectedDates, selectedRoom?.basePrice]);
 
   useEffect(() => {
     setTotalGuest(guestsNumber + childrenNumber);
@@ -141,7 +123,6 @@ const ReservationCard = ({ listingData }) => {
       totalGuest,
       reservationBasePrice,
       tax,
-      authorEarned,
     };
     dispatch(newReservation(data));
   }, [
@@ -153,7 +134,6 @@ const ReservationCard = ({ listingData }) => {
     totalGuest,
     reservationBasePrice,
     tax,
-    authorEarned,
   ]);
 
   // Calculate the disabled date ranges for each object
@@ -162,7 +142,7 @@ const ReservationCard = ({ listingData }) => {
     endDate: parseISO(obj.checkOut),
   }));
 
-  console.log(disabledDateRanges);
+  // console.log(disabledDateRanges);
 
   // Generate an array of individual dates within disabledDateRanges
   const disabledDates = disabledDateRanges.reduce((dates, range) => {
@@ -178,23 +158,33 @@ const ReservationCard = ({ listingData }) => {
     return dates;
   }, []);
 
+  const message = `🎉 *Congratulations!* Your booking request has been received. 🎉\n\n🏨 *Room Type*: ${selectedRoom?.roomType}\n🏨 *Total Guest*: ${totalGuest}\n💵 *Base Price*: Rs. ${selectedRoom?.basePrice}\n📅 *Dates*: ${localStartDate} to ${localEndDate}\n🔗 *Booking Link*: ${window.location.href}\n\nWe will connect you for further for more details. 🌟`;
+  const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+  const handleClick = (e) => {
+    if (!user || !selectedRoom) {
+      e.preventDefault(); // Prevent the default action
+    }
+  };
   return (
     <>
       <div className=" w-full min-h-[315px] rounded-xl border border-[#dddddd] sticky top-32 shadow-customShadow p-6">
         <div className=" flex felx-row justify-between items-start">
           <div className=" flex flex-col">
           {user? (
-            <div>
-              <h3 className=" text-[22px] text-[#222222] font-semibold">
-                Rs. {reservationBasePrice}
+             <div>
+                <h3 className=" text-[22px] text-[#222222] font-semibold">
+                {selectedRoom?selectedRoom.roomType:"Select a room"} 
                 </h3>
+                <p>Rs. {selectedRoom?selectedRoom.basePrice:"-"}</p>
                 <p className=" text-[#313131] text-sm">Total before taxes</p>
               </div>
             ) : (
               <p className="text-xs sm:text-sm font-medium underline">
-              Login to see price
+                Login to see price 
               </p>
+              
             )}
+            {}
           </div>
           <span className=" text-sm text-[#222222] flex flex-row gap-1 items-center mt-2">
             <AiFillStar size={18} />
@@ -359,15 +349,20 @@ const ReservationCard = ({ listingData }) => {
 
         {/* reservation button */}
         {!showDropdown && !calendarState && (
+          
           <div className=" mt-6 flex justify-center rounded-md">
-            <button
-              onClick={() => {
-                handleBooking();
-              }}
-              className="capitalize py-3 w-full bg-[#ff385c] hover:bg-[#d90b63] transition duration-200 ease-in text-white font-medium text-sm rounded-md"
+            <a 
+              href={whatsappUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className={`mt-4 py-2 px-4 rounded-lg transition text-center inline-block ${
+                selectedRoom && user ? 'bg-green-500 text-white hover:bg-green-600' : 'bg-gray-500 text-gray-300 cursor-not-allowed'
+              }`}
+              aria-disabled={!user && !selectedRoom}
+              onClick={handleClick}
             >
-              reserve
-            </button>
+              {selectedRoom  && user ? 'Book via WhatsApp' : 'Select a room to book'}
+            </a>
           </div>
         )}
 
@@ -385,7 +380,6 @@ const ReservationCard = ({ listingData }) => {
               moveRangeOnFirstSelection={false}
               ranges={selectedDates}
               disabledDates={disabledDates}
-              // isDayBlocked={(date) => isDateDisabled(date)}
               direction="vertical"
               showDateDisplay={false}
               minDate={new Date()}

@@ -2,9 +2,12 @@ import ListingDescriptionPopup from "../popUp/ListingDescriptionPopup";
 import Map from "../../components/Map";
 import { amenities } from "./amenitiesApi";
 import { AiOutlineRight } from "react-icons/ai";
+import ListingRooms from "../ListingDetails/ListingRooms";
+
 
 /* eslint-disable react/prop-types */
-const ListingDescriptions = ({ listingData, author }) => {
+const ListingDescriptions = ({ listingData, author, onRoomSelect }) => {
+  
   const latitude = Number(listingData?.location?.city?.latitude);
   const longitude = Number(listingData?.location?.city?.longitude);
   const latLong = [latitude, longitude];
@@ -57,6 +60,8 @@ const ListingDescriptions = ({ listingData, author }) => {
         <AiOutlineRight size={18} />
       </button>
 
+      <hr className=" h-[1.2px] w-full bg-[#dddddd] my-8" />
+        <ListingRooms listingData={listingData}  onRoomSelect={onRoomSelect}/>
       <hr className=" h-[1.2px] w-full bg-[#dddddd] my-8" />
 
       {/* amenities / what's this place is offering */}

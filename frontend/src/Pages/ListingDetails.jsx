@@ -10,18 +10,24 @@ import ListingDetailsPageSkeleton from "../components/skeletonLoading/ListingDet
 
 const ListingDetails = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedRoom, setSelectedRoom] = useState(null); // Add state for selected room
+
   const data = useSelector((state) => state.house.listingDetails);
   const params = useParams();
-
   const dispatch = useDispatch();
 
   // listing details data
   const listingData = data?.listing;
   const listedAuthor = data?.listingAuthor;
+  
+  const handleRoomSelect = (room) => {
+    setSelectedRoom(room);
+  };
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
+
 
   useEffect(() => {
     async function getListingData() {
@@ -31,9 +37,11 @@ const ListingDetails = () => {
     getListingData();
   }, [params.id, dispatch]);
 
+
   if (isLoading) {
     return <ListingDetailsPageSkeleton />;
   }
+
   return (
     <main className="max-w-screen-xl xl:px-12 mx-auto py-7 px-5 sm:px-16 md:px-8">
       <section className=" flex flex-col-reverse md:flex-col gap-7">
@@ -42,17 +50,18 @@ const ListingDetails = () => {
         {/* listing photos */}
         <ListingsPhotos listingData={listingData} />
       </section>
-      <section className=" grid grid-cols-1 md:grid-cols-8 lg:grid-cols-6 md:gap-x-8 lg:gap-x-20 pt-8 sm:pt-12 md:pt-16">
+      <section className="grid grid-cols-1 md:grid-cols-8 lg:grid-cols-6 md:gap-x-8 lg:gap-x-20 pt-8 sm:pt-12 md:pt-16">
         {/* listings description and details */}
         <div className="md:col-span-5 lg:col-span-4 order-2 md:order-1 flex flex-col min-h-[800px] pt-16 sm:pt-20 md:pt-0">
           <ListingDescriptions
             listingData={listingData}
             author={listedAuthor}
+            onRoomSelect={handleRoomSelect} 
           />
         </div>
         {/* reservations of the listing */}
-        <div className="md:col-span-3 lg:col-span-2 order-1 md:order-2 max-h-[900px]">
-          <ReservationCard listingData={listingData} />
+        <div className="md:col-span-3 lg:col-span-2 order-1 md:order-2 max-h-[30000]">
+          <ReservationCard selectedRoom={selectedRoom} /> 
         </div>
       </section>
     </main>
