@@ -269,7 +269,7 @@ URL. */
             <button
               className={`text-lg text-white font-medium rounded-md px-9 py-3 disabled:bg-[#dddddd] disabled:cursor-not-allowed transition durtion-300 ease-in ${
                 url?.includes("/receipt")
-                  ? "bg-[#ff385c] hover:bg-[#d90b63]"
+                  ? "bg-[#FFB724] hover:bg-[#d90b63]"
                   : "bg-[#222222] hover:bg-black"
               }`}
               onClick={handleNext}

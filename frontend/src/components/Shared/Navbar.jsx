@@ -70,11 +70,11 @@ const Navbar = () => {
       >
         {/* logo */}
         <div className=" md:w-[160px]">
-          <span className="flex flex-row gap-2 items-center max-w-[120px]">
+        <span className="flex flex-row gap-2 items-center">
             <img
-              src={motelLogo}
+              src="https://hotelbox.in/wp-content/uploads/2022/03/HotelBoxlogo.png"
               alt="Logo"
-              className=" w-10 cursor-pointer"
+              className=" w-30 cursor-pointer"
               onClick={() => {
                 // setting cat to house for listing data fetching
                 JSON.stringify(localStorage.setItem("category", "House"));
@@ -83,10 +83,9 @@ const Navbar = () => {
               }}
             />
             {/* if user is in hosting homes page we want only logo */}
-            {inHostHomesLandingPage || isSmallDevice ? null : (
-              <p className="text-xl text-[#ff385c] font-bold">Yaask Travells</p>
-            )}
+
           </span>
+
         </div>
         {/* if not in the booking page then show the options 👇 */}
         {inBookingPage ? (
@@ -110,7 +109,7 @@ const Navbar = () => {
                     }}
                     placeholder="Search for places"
                   />
-                  <div className="bg-[#ff385c] rounded-full p-2">
+                  <div className="bg-[#FFB724] rounded-full p-2">
                     <img src={searchIcon} alt="Search hotel" className="w-4" />
                   </div>
                 </div>
@@ -131,7 +130,7 @@ const Navbar = () => {
                 </p>
                 <Link
                   to="/become-a-host"
-                  className=" flex flex-row justify-between items-center gap-2 bg-[#ff385c] hover:bg-[#d90b63] transition-all duration-300 px-3 py-2 rounded-lg"
+                  className=" flex flex-row justify-between items-center gap-2 bg-[#FFB724] hover:bg-[#d90b63] transition-all duration-300 px-3 py-2 rounded-lg"
                 >
                   <img src={house} alt="House setup" className=" w-4 md:w-5" />
                   <p className=" font-semibold text-sm md:text-base text-white">

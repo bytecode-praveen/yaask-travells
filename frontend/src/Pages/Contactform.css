@@ -40,7 +40,7 @@
 }
 
 .social-icon a:hover {
-  color: #ff004f;
+  color: #FFB724;
   transform: translateY(-3px); /* Reduce transformation for better hover effect */
 }
 
@@ -70,12 +70,12 @@ form .btn2 {
 }
 
 form .btn2:hover{
-  color: #ff004f;
+  color: #FFB724;
 }
 
 .contact-left p{
   
-  color: #ff004f;
+  color: #FFB724;
 }
 
 .contact-left .sub-title{

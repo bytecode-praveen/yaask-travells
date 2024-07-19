@@ -109,7 +109,7 @@ const Home = () => {
         <>
           {/* all listing data fetching */}
           <section className=" py-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 mx-auto gap-x-7 gap-y-10">
-            {location?.search?.split("=")[1]?.includes("House") ||
+            {location?.search?.split("=")[1]?.includes("Hotel") ||
             (location?.pathname === "/" &&
               !location?.search?.split("?")[1]?.includes("category")) ? (
               <>

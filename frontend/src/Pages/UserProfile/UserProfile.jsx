@@ -114,7 +114,7 @@ const UserProfile = () => {
                 </p>
                 <Link
                   to={`/users/show/${user?._id}/editMode=true`}
-                  className={`bg-[#ff385c] hover:bg-[#d90b63] transition-all duration-300 text-white font-medium rounded-lg px-5 py-3 disabled:bg-[#dddddd]`}
+                  className={`bg-[#FFB724] hover:bg-[#d90b63] transition-all duration-300 text-white font-medium rounded-lg px-5 py-3 disabled:bg-[#dddddd]`}
                   type="submit"
                 >
                   Create profile
