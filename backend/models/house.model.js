@@ -100,7 +100,7 @@ const houseSchema = new mongoose.Schema({
             amenities: {
                 type: Array
             },
-            photos: {
+            photos: {   
                 type: Array
             }
         }

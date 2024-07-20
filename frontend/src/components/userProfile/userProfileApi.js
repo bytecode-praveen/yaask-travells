@@ -8,6 +8,7 @@ import clockIcon from "../../assets/basicIcon/userProfile/clockIcon.svg";
 import petIcon from "../../assets/basicIcon/userProfile/petIcon.png";
 
 export const profileOptions = [
+   
     {
         name: "Where I went to school",
         img: schoolIcon,

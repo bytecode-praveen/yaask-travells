@@ -30,6 +30,12 @@ const ShowUserProfileData = () => {
         </Link>
       </div>
       <div className=" grid grid-cols-2 gap-x-16 gap-y-4 mt-6">
+      <p className=" mt-8 text-[#222222] text-base">
+        PAN: {user?.panNo}
+      </p>
+      <p className=" mt-8 text-[#222222] text-base">
+        GST: {user?.gstNo}
+      </p>
         {filteredNewOptions.map((option, index) => {
           return (
             <div key={index} className=" flex flex-row gap-3 items-center py-1">
@@ -44,6 +50,7 @@ const ShowUserProfileData = () => {
       <p className=" mt-8 text-[#222222] text-base">
         {user?.profileDetails?.about}
       </p>
+     
     </section>
   );
 };

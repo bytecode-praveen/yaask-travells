@@ -47,6 +47,8 @@ const CreateUserPopup = ({
         firstName: data.firstName,
         lastName: data.lastName,
       },
+      panNo: data.panNo,
+      gstNo: data.gstNo,
       emailId: data.email,
       birthDate: data.birthDate,
       password: data.password,
@@ -106,7 +108,7 @@ const CreateUserPopup = ({
   };
 
   return (
-    <div className="overflow-y-auto max-h-[300px]">
+    <div className="overflow-y-auto max-h-[500px]">
       <form
         onSubmit={handleSubmit(handleCreateUser)}
         className="px-8 flex flex-col gap-6"
@@ -146,6 +148,56 @@ const CreateUserPopup = ({
             }`}
           >
             Make sure it matches the name on your government ID.
+          </p>
+        </div>
+        <div className=" flex flex-col gap-3">
+          <input
+            type="text"
+            className="w-full border-[1.4px] border-[#dddddd] p-3 rounded-lg"
+            placeholder="PAN Number"
+            {...register("panNo", { required: true, maxLength: 10 })}
+            aria-invalid={errors.panNo ? "true" : "false"}
+          />
+          <input
+            type="text"
+            className="w-full border-[1.4px] border-[#dddddd] p-3 rounded-lg"
+            placeholder="GST Number"
+            {...register("gstNo", { required: true, maxLength: 15 })}
+            aria-invalid={errors.gstNo ? "true" : "false"}
+          />
+          {errors.panNo?.type === "required" &&
+            (
+              <div
+                role="alert"
+                className=" flex flex-row items-center gap-2 -mt-2"
+              >
+                <img
+                  src={errorIcon}
+                  alt="PAN Number is required"
+                  className="w-5"
+                />
+                <p className="text-xs text-[#c13515]">PAN Number is required</p>
+              </div>
+            )}
+            {errors.gstNo?.type === "required" &&
+            (
+              <div
+                role="alert"
+                className=" flex flex-row items-center gap-2 -mt-2"
+              >
+                <img
+                  src={errorIcon}
+                  alt="GST Number is required"
+                  className="w-5"
+                />
+                <p className="text-xs text-[#c13515]">GST Number is required</p>
+              </div>
+            )} 
+          <p
+            className={` text-xs text-[#717171] -mt-2 ${
+              errors.firstName || errors.lastName ? " hidden" : "block"
+            }`}
+          >
           </p>
         </div>
         <div>
@@ -275,7 +327,7 @@ const CreateUserPopup = ({
         </div>
         <div>
           <button
-            className={`bg-[#ff385c] hover:bg-[#d90b63] transition-all duration-300 text-white font-medium rounded-lg p-3 w-full disabled:bg-[#dddddd] ${
+            className={`bg-[#FFB724] hover:bg-[#d90b63] transition-all duration-300 text-white font-medium rounded-lg p-3 w-full disabled:bg-[#dddddd] ${
               isLoading ? " cursor-not-allowed" : ""
             }`}
             type="submit"

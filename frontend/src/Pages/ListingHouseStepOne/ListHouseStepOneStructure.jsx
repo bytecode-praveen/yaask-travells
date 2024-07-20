@@ -32,9 +32,18 @@ const ListHouseStepOneStructure = () => {
   return (
     <div className=" flex flex-col gap-10 max-w-screen-md mx-auto my-6">
       <h1 className=" text-[#222222] text-xl sm:text-2xl md:text-[32px] font-medium">
-        Which of these best describes <br /> your place?
+        What you want to list?
       </h1>
       <div className=" grid grid-cols-2 md:grid-cols-3 gap-5 mx-auto md:mx-0">
+       <StructureCard
+          style={structureCardStyle}
+          Img={LiaHotelSolid}
+          name={"Hotel"}
+          onClick={handleStoreCardData}
+          storedCardData={storedCardData}
+          svgSize={svgSize}
+          ptagStyle={structurePtagClass}
+        />
         <StructureCard
           style={structureCardStyle}
           Img={PiHouseLine}
@@ -151,15 +160,7 @@ const ListHouseStepOneStructure = () => {
           svgSize={svgSize}
           ptagStyle={structurePtagClass}
         />
-        <StructureCard
-          style={structureCardStyle}
-          Img={LiaHotelSolid}
-          name={"Hotel"}
-          onClick={handleStoreCardData}
-          storedCardData={storedCardData}
-          svgSize={svgSize}
-          ptagStyle={structurePtagClass}
-        />
+        
       </div>
     </div>
   );
