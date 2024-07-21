@@ -19,6 +19,7 @@ const ListingPreviewCard = ({ listingData, showBeforeTaxPrice }) => {
         {/* listings details */}
         <div className=" flex flex-col gap-1">
           <p className="text-sm text-[#222222] font-medium">
+            {listingData?.title},
             {listingData?.location?.city?.name},{" "}
             {listingData?.location?.country?.name}
           </p>
@@ -48,8 +49,7 @@ const ListingPreviewCard = ({ listingData, showBeforeTaxPrice }) => {
             </>
           ) : (
             <>
-              <AiFillStar size={16} />
-              <p className=" text-sm">New</p>
+             
             </>
           )}
         </div>
