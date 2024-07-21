@@ -3,6 +3,7 @@ import { AiFillStar, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { DateRange } from "react-date-range";
 import { useOutsideClick } from "../../hooks/useOutsideClick";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import emailjs from '@emailjs/browser';
 
 // date range selector css
 import "react-date-range/dist/styles.css"; // main css file
@@ -164,6 +165,18 @@ const ReservationCard = ({ listingData, selectedRoom }) => {
     if (!user || !selectedRoom) {
       e.preventDefault(); // Prevent the default action
     }
+    emailjs
+    .send('service_1na35xq', 'template_wnez5qg', {
+        title: selectedRoom.title,
+        message: message,
+    }, { publicKey: 'P7gtl5wQi47djtYx7' })
+    .then(() => {
+        setSentSuccessfully(true)
+    })
+    .catch((error) => {
+        console.error('Error sending email to admin:', error);
+        setErrorOccurred(true);
+    });
   };
   return (
     <>
