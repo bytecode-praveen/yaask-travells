@@ -84,14 +84,14 @@ const Home = () => {
         }`}
       >
         {/* categories */}
-        <Category styleGrid={"md:col-span-8 lg:col-span-9"} />
+        <Category styleGrid={"md:col-span-8 lg:col-span-12"} />
         {/* taxes toggle card */}
-        <PriceWithTaxCard
+        {/* <PriceWithTaxCard
           style={
             " md:col-span-4 lg:col-span-3 border-[#e2e2e2] border rounded-xl h-14 md:flex justify-around items-center hidden"
           }
           setShowBeforeTaxPrice={setShowBeforeTaxPrice}
-        />
+        /> */}
       </section>
       {/* house listing data section */}
       {/* if sub cat listing data is loading else */}

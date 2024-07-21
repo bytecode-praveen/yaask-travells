@@ -42,7 +42,7 @@ const ListingNavbar = () => {
         </Link>
         <div className=" flex flex-row items-center gap-5 text-sm text-[#222222] font-medium">
           <Link
-            to={`/users/dashboard/${user?._id}/overview=true`}
+            to={`/users/dashboard/${user?._id}/listing=true`}
             className=" border-[1.3px] border-[#dddddd] px-4 py-2 rounded-full hover:border-[#222222]"
           >
             Dashboard

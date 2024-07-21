@@ -27,6 +27,7 @@ const Navbar = () => {
   const [popup, setPopup] = useState(false);
 
   const dispatch = useDispatch();
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleLogout = () => {
     dispatch(userLogOut());
@@ -35,7 +36,15 @@ const Navbar = () => {
   useEffect(() => {
     dispatch(getUser());
   }, []);
-
+  const handleSearch = () => {
+    const searchUrl = `/?category=${encodeURIComponent(searchQuery)}`;
+    window.location.href = searchUrl;
+  };
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+        handleSearch();
+    }
+  };
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
@@ -108,8 +117,11 @@ const Navbar = () => {
                       marginRight: '8px',
                     }}
                     placeholder="Search for places"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onKeyDown={handleKeyDown}
                   />
-                  <div className="bg-[#FFB724] rounded-full p-2">
+                  <div className="bg-[#FFB724] rounded-full p-2"  onClick={handleSearch}>
                     <img src={searchIcon} alt="Search hotel" className="w-4" />
                   </div>
                 </div>
@@ -142,7 +154,7 @@ const Navbar = () => {
               <>
                 {/* user bar */}
                 <div className="flex justify-end items-center">
-                  {!inUserDashboard && (
+                  {/* {!inUserDashboard && (
                     <Link
                       to="/host/homes"
                       className=" bg-[#ffffff] hover:bg-[#f0f0f0] transition-all rounded-full p-3 cursor-pointer mr-3 md:block hidden"
@@ -151,7 +163,7 @@ const Navbar = () => {
                         Rent Your Place
                       </p>
                     </Link>
-                  )}
+                  )} */}
 
                   <div
                     className="border-[1px] border-[#dddddd] rounded-full py-1 px-2 flex flex-row gap-3 hover:shadow-md transition-all cursor-pointer relative"
@@ -204,7 +216,7 @@ const Navbar = () => {
                             Login
                           </Link>
                           <hr className="h-[1.5px] bg-[#dddddd] my-1" />
-                          <Link>Rent Your Place</Link>
+                          {/* <Link>Rent Your Place</Link> */}
                           <Link>Help</Link>
                         </div>
                       ) : (
@@ -220,7 +232,7 @@ const Navbar = () => {
                             <>
                               {!inUserDashboard ? (
                                 <Link
-                                  to={`/users/dashboard/${user._id}/overview=true`}
+                                  to={`/users/dashboard/${user._id}/listing=true`}
                                   onClick={() => {
                                     JSON.stringify(
                                       sessionStorage.setItem("activePage", 1)
@@ -239,8 +251,8 @@ const Navbar = () => {
                           ) : (
                             <Link className="font-medium">Notifications</Link>
                           )}
-                          <Link className="font-medium">Trips</Link>
-                          <Link className="font-medium">Wishlists</Link>
+                          {/* <Link className="font-medium">Trips</Link> */}
+                          {/* <Link className="font-medium">Wishlists</Link> */}
                           <hr className="h-[1.5px] bg-[#dddddd] my-1" />
                           <Link to={"/host/homes"}>Rent Your Place</Link>
                           <Link to={`/users/show/${user._id}`}>Account <p className="font-light">{user.emailId}</p></Link>

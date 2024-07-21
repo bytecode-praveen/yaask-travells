@@ -517,7 +517,10 @@ exports.getListingDataWithCat = async (req, res) => {
         const category = payload.category;
 
         const catBasedListing = await House.find({
-            houseType: { $eq: category }
+            $or: [
+                { houseType: { $eq: category } },
+                { 'location.city.name': { $regex: new RegExp(category, 'i') } }
+                ]
         });
 
         const response = {
