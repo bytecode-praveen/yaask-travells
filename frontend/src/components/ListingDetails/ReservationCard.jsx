@@ -166,7 +166,7 @@ const ReservationCard = ({ listingData, selectedRoom }) => {
       e.preventDefault(); // Prevent the default action
     }
     emailjs
-    .send('service_1na35xq', 'template_wnez5qg', {
+    .send('service_gwh3ed6', 'template_wnez5qg', {
         title: selectedRoom.title,
         message: message,
     }, { publicKey: 'P7gtl5wQi47djtYx7' })
