@@ -67,10 +67,11 @@ form .btn2 {
   margin-top: 20px;
   cursor: pointer;
   transition: 1s;
+  background-color: #FFB724 !important;
 }
 
 form .btn2:hover{
-  color: #FFB724;
+  color: #000;
 }
 
 .contact-left p{
