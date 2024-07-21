@@ -119,6 +119,7 @@ exports.saveFloorPlan = async (req, res) => {
         const payload = req.body;
         const houseId = payload.houseId;
         const floorplanData = payload.floorPlan;
+        const { rooms, ...updatedFloorPlan } = floorplanData;
 
         // console.log(payload, "line 121")
 
@@ -127,10 +128,11 @@ exports.saveFloorPlan = async (req, res) => {
         }
 
         const updateCriteria = {
-            floorPlan: floorplanData
+            floorPlan: updatedFloorPlan,
+            rooms: rooms
         }
 
-        if (floorplanData !== undefined) {
+        if (updatedFloorPlan !== undefined) {
             const houseDetails = await House.findOneAndUpdate(findHouseCriteria, updateCriteria, { new: true })
 
             let response = {

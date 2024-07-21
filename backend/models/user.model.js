@@ -13,6 +13,16 @@ const userSchema = new mongoose.Schema({
             required: true,
         },
     },
+    panNo:{
+        type: String,
+        default: null
+    },
+
+    gstNo:{
+        type: String,
+        default: null
+    },
+
     birthDate: {
         type: String,
         default: "0000/00/00",

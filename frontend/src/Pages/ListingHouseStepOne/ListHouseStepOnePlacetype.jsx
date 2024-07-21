@@ -47,6 +47,15 @@ const ListHouseStepOnePlacetype = () => {
           onClick={handleStoreCardData}
           storedCardData={storedCardData}
         />
+        <PlaceTypeCard
+        head={"Hotel rooms"}
+        desc={
+          "Its a hotel property with multiple type of rooms."
+        }
+        Img={PiHouseLine}
+        onClick={handleStoreCardData}
+        storedCardData={storedCardData}
+      />
       </div>
     </div>
   );

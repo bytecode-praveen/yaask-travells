@@ -19,7 +19,7 @@ const Payment = ({ searchParamsObj }) => {
   const [message, setMessage] = useState("");
   //   geting the checkin and checkout dates
 
-  console.log(message)
+  //console.log(message)
   
   const dateObj = {
     checkin: searchParamsObj?.checkin,
@@ -62,7 +62,7 @@ const Payment = ({ searchParamsObj }) => {
 
     if (error) {
       setMessage(error.message);
-      console.log(error)
+      //console.log(error)
       toast.error("Payment failed. Try again!");
     }
 

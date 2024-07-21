@@ -20,7 +20,7 @@ export const ContactUs = () => {
                 message: `Query from ${clientName}: ${form.current['message'].value}`,
             }, { publicKey: 'W7JLonZhnMYOR4Vb7' })
             .then(() => {
-                console.log('Email sent to admin!');
+                //console.log('Email sent to admin!');
                 setSentSuccessfully(true)
             })
             .catch((error) => {

@@ -31,7 +31,7 @@ const ListingFooter = () => {
   const dispatch = useDispatch();
   const currentHouseId = localStorage.getItem("currentHouseId");
 
-  console.log(createHouseData);
+  //console.log(createHouseData);
 
   useEffect(() => {
     dispatch(getHouseDetails(currentHouseId));
@@ -95,8 +95,11 @@ const ListingFooter = () => {
       } else if (currentStepIndex === 5) {
         const floorPlanData = {
           floorPlan: createHouseData?.newHouse?.floorPlan,
+          rooms: createHouseData?.newHouse?.rooms,
           houseId: currentListingHouseId,
         };
+        //console.log("floorPlanData:-----");
+        //console.log(floorPlanData);
         // data saving for floor plan in db
         await dispatch(saveFloorPlan(floorPlanData));
       } else if (currentStepIndex === 7) {

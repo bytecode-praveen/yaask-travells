@@ -21,6 +21,12 @@ exports.signUp = async (req, res, next) => {
         if (!payload.birthDate) {
             throw new Error("Please provide date of birth");
         }
+        if (!payload.panNo) {
+            throw new Error("Please provide PAN Number");
+        }
+        if (!payload.gstNo) {
+            throw new Error("Please provide GST Number");
+        }
 
         const passwordHash = await bcrypt.hash(payload.password, saltRounds)
 
@@ -30,6 +36,8 @@ exports.signUp = async (req, res, next) => {
                 lastName: payload.name.lastName
             },
             emailId: payload.emailId,
+            panNo: payload.panNo,
+            gstNo: payload.gstNo,
             birthDate: payload.birthDate,
             password: passwordHash
         }
@@ -255,6 +263,14 @@ exports.userProfileDetails = async (req, res) => {
 
         const userProfile = userDetails.profileDetails.profile;
 
+        if (fieldName == 'panNo'){
+            userDetails.panNo = profileDetailsvalue
+            await userDetails.save();
+        }
+        if (fieldName == 'gstNo'){
+            userDetails.gstNo = profileDetailsvalue
+            await userDetails.save();
+        }
         if (typeof userProfile === "object") {
             if (fieldName in userProfile) {
                 // Update the value of the field

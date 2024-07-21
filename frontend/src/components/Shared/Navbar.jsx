@@ -243,7 +243,7 @@ const Navbar = () => {
                           <Link className="font-medium">Wishlists</Link>
                           <hr className="h-[1.5px] bg-[#dddddd] my-1" />
                           <Link to={"/host/homes"}>Rent Your Place</Link>
-                          <Link to={`/users/show/${user._id}`}>Account</Link>
+                          <Link to={`/users/show/${user._id}`}>Account <p className="font-light">{user.emailId}</p></Link>
                           <hr className="h-[1.5px] bg-[#dddddd] my-1" />
                           <Link>Help</Link>
                           <Link
