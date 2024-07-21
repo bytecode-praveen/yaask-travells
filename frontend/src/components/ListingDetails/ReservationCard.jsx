@@ -56,7 +56,7 @@ const ReservationCard = ({ listingData, selectedRoom }) => {
   // calculating how many nights guest is staying
   const [nightsStaying, setNightStaying] = useState(1);
 
-  // console.log(nightsStaying, typeof nightsStaying, "nights");
+  // //console.log(nightsStaying, typeof nightsStaying, "nights");
 
   // formatted dates to save in the db
   const formattedStartDate = selectedDates[0]?.startDate?.toISOString();
@@ -66,7 +66,7 @@ const ReservationCard = ({ listingData, selectedRoom }) => {
   const localStartDate = new Date(formattedStartDate).toLocaleDateString();
   const localEndDate = new Date(formattedEndDate).toLocaleDateString();
 
-  // console.log(
+  // //console.log(
   //   new Date(formattedStartDate).toLocaleDateString(),
   //   localStartDate,
   //   localEndDate,
@@ -79,11 +79,11 @@ const ReservationCard = ({ listingData, selectedRoom }) => {
 
 
   const handleBooking = () => {
-    console.log("Selected room:" +selectedRoom.roomType);
-    console.log("nightsStaying:" +nightsStaying);
-    console.log("totalGuest:" +totalGuest);
-    console.log("reservationBasePrice:" +reservationBasePrice);
-    console.log("selectedDates:" + localStartDate + " to "+ localEndDate);
+    //console.log("Selected room:" +selectedRoom.roomType);
+    //console.log("nightsStaying:" +nightsStaying);
+    //console.log("totalGuest:" +totalGuest);
+    //console.log("reservationBasePrice:" +reservationBasePrice);
+    //console.log("selectedDates:" + localStartDate + " to "+ localEndDate);
   };
 
   // getting saved reservations data
@@ -142,7 +142,7 @@ const ReservationCard = ({ listingData, selectedRoom }) => {
     endDate: parseISO(obj.checkOut),
   }));
 
-  // console.log(disabledDateRanges);
+  // //console.log(disabledDateRanges);
 
   // Generate an array of individual dates within disabledDateRanges
   const disabledDates = disabledDateRanges.reduce((dates, range) => {

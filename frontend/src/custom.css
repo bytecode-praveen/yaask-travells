@@ -106,3 +106,83 @@ input[type="checkbox"] {
 .profile__container__div {
   flex: 0 0 auto;
 }
+.hotel-rooms {
+  margin: 20px;
+}
+
+.toggle-form-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.toggle-form-button:hover {
+  background-color: #0056b3;
+}
+
+.add-room-form {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.add-room-button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.add-room-button:hover {
+  background-color: #218838;
+}
+
+.rooms-list {
+  margin-top: 20px;
+}
+
+.room-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+
+.room-card h3 {
+  margin-top: 0;
+}
+
+.photos {
+  display: flex;
+  gap: 10px;
+}
+
+.room-photo {
+  width: 100px;
+  border-radius: 5px;
+}

@@ -168,7 +168,7 @@ const ListHouseStepOneStructure = () => {
 
 // styles for STructuredCard component
 const structureCardStyle =
-  "flex flex-col gap-1 px-6 rounded-xl transition duration-300 h-[120px] w-[150px] sm:w-[220px] cursor-pointer justify-center";
+  "flex flex-col gap-1 px-6 rounded-xl transition duration-300 h-[100px] w-[150px] sm:w-[220px] cursor-pointer justify-center";
 const structurePtagClass = "text-[#222222] text-base md:text-lg font-medium";
 
 export default ListHouseStepOneStructure;

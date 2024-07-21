@@ -11,7 +11,7 @@ const ShowUserProfileData = () => {
   });
 
   const values = userProfile && Object.entries(user?.profileDetails?.profile).map(([key, value]) => {
-    console.log(key)
+    //console.log(key)
     return value.value;
   });
 

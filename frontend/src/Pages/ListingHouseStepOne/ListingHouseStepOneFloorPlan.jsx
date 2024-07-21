@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import FloorPlanCard from "../../components/listingHouse/FloorPlanCard";
+import HotelRooms from "../../components/listingHouse/HotelRooms";
+
 import { useDispatch, useSelector } from "react-redux";
 import { createNewHouse } from "../../redux/actions/houseActions";
 
@@ -9,9 +11,10 @@ const ListingHouseStepOneFloorPlan = () => {
   const [bedroomsNumber, setBedroomsNumber] = useState(0);
   const [bedsNumber, setBedsNumber] = useState(1);
   const [bathroomsNumber, setBathroomsNumber] = useState(0);
+  const [rooms, setRooms] = useState([]);
   const dispatch = useDispatch();
 
-  console.log(newHouseData);
+  //console.log(newHouseData);
 
   useEffect(() => {
     let floorPlan = {
@@ -19,12 +22,14 @@ const ListingHouseStepOneFloorPlan = () => {
       bedrooms: bedroomsNumber,
       beds: bedsNumber,
       bathroomsNumber: bathroomsNumber,
+      rooms: rooms,
     };
     if (
       guestNumber !== 0 ||
       bedroomsNumber !== 0 ||
       bedsNumber !== 0 ||
-      bathroomsNumber !== 0
+      bathroomsNumber !== 0 ||
+      rooms.length > 0
     ) {
       dispatch(
         createNewHouse(
@@ -39,6 +44,7 @@ const ListingHouseStepOneFloorPlan = () => {
     bathroomsNumber,
     bedroomsNumber,
     bedsNumber,
+    rooms,
     dispatch,
     guestNumber,
     newHouseData?.houseType,
@@ -46,7 +52,7 @@ const ListingHouseStepOneFloorPlan = () => {
     newHouseData?.privacyType,
   ]);
   return (
-    <section className=" flex flex-col gap-10 max-w-screen-md mx-auto my-6 min-h-[70dvh] 2xl:h-[80vh]">
+    <section className=" flex flex-col gap-10 max-w-screen-md mx-auto my-6 min-h-[200dvh] 2xl:h-[100vh]">
       <div className=" flex flex-col gap-2">
         <h1 className=" text-[#222222] text-xl sm:text-2xl md:text-[32px] font-medium">
           Share some basics about your place
@@ -55,36 +61,42 @@ const ListingHouseStepOneFloorPlan = () => {
           You&apos;ll add more details later, like bed types
         </p>
       </div>
-      <div className=" flex flex-col gap-5 mt-5">
-        <FloorPlanCard
-          name={"Guests"}
-          number={guestNumber}
-          setNumber={setGuestNumber}
-          filter={false}
-        />
-        <hr className="bg-[#dddddd] my-2" />
-        <FloorPlanCard
-          name={"Bedrooms"}
-          number={bedroomsNumber}
-          setNumber={setBedroomsNumber}
-          filter={false}
-        />
-        <hr className="bg-[#dddddd] my-2" />
-        <FloorPlanCard
-          name={"Beds"}
-          number={bedsNumber}
-          setNumber={setBedsNumber}
-          filter={false}
-        />
-        <hr className="bg-[#dddddd] my-2" />
-        <FloorPlanCard
-          name={"Bathrooms"}
-          number={bathroomsNumber}
-          setNumber={setBathroomsNumber}
-          filter={false}
-        />
-        <hr className="bg-[#dddddd] my-2" />
-      </div>
+    { newHouseData?.houseType == 'Hotel' ? 
+      (
+        <div className=" flex flex-col gap-5 mt-5">
+          <FloorPlanCard
+            name={"Guests"}
+            number={guestNumber}
+            setNumber={setGuestNumber}
+            filter={false}
+          />
+          <hr className="bg-[#dddddd] my-2" />
+          <FloorPlanCard
+            name={"Bedrooms"}
+            number={bedroomsNumber}
+            setNumber={setBedroomsNumber}
+            filter={false}
+          />
+          <hr className="bg-[#dddddd] my-2" />
+          <FloorPlanCard
+            name={"Beds"}
+            number={bedsNumber}
+            setNumber={setBedsNumber}
+            filter={false}
+          />
+          <hr className="bg-[#dddddd] my-2" />
+          <FloorPlanCard
+            name={"Bathrooms"}
+            number={bathroomsNumber}
+            setNumber={setBathroomsNumber}
+            filter={false}
+          />
+          <hr className="bg-[#dddddd] my-2" />
+        </div>
+      ) : (
+        <HotelRooms  setRoomsTop={setRooms}/>
+      )
+    }
     </section>
   );
 };

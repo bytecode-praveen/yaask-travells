@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { PropagateLoader } from "react-spinners";
 import { createNewHouse } from "../../redux/actions/houseActions";
 
-const PhotosCard = () => {
+const PhotosCardHotelRoom = ({setPhotos}) => {
   const newHouseData = useSelector((state) => state.house.newHouse);
   const [images, setImages] = useState([]);
   const [inputImage, setInputImage] = useState(null);
@@ -29,19 +29,6 @@ const PhotosCard = () => {
     }
   };
 
-  // saving photos state globally
-  useEffect(() => {
-    dispatch(
-      createNewHouse(
-        newHouseData?.houseType,
-        newHouseData?.privacyType,
-        newHouseData?.location,
-        newHouseData?.floorPlan,
-        newHouseData?.amenities,
-        images
-      )
-    );
-  }, [images, dispatch]);
 
   useEffect(() => {
     async function uploadImagetoCloudinary() {
@@ -66,10 +53,12 @@ const PhotosCard = () => {
             .then((data) => {
               //console.log(data);
               setImages([...images, data.url]);
+              setPhotos([...images, data.url]);
               if (data.error) {
                 toast.error(data?.error?.message);
                 setIsImgUploading(false);
                 setImages(null);
+                setPhotos(null);
               } else {
                 setIsImgUploading(false);
               }
@@ -147,4 +136,4 @@ const PhotosCard = () => {
   );
 };
 
-export default PhotosCard;
+export default PhotosCardHotelRoom;

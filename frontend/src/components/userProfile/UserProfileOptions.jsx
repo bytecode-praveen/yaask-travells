@@ -73,7 +73,7 @@ const UserProfileOptions = ({ setShowPopup, setSelectedOption }) => {
                 </div>
             </div>
           {profileOptions.map((option, i) => {
-            console.log(option);
+            //console.log(option);
             /* The code block is iterating over the `profileOptions` array and the `userProfile` object to find a matching field name. */
             let savedProfileData;
             for (const keys in option) {
