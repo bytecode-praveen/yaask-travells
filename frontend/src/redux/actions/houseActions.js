@@ -19,21 +19,6 @@ export const getHouseDetails = (id) => async (dispatch) => {
   }
 };
 
-export const getCities = () => async (dispatch) => {
-  try {
-    const res = await api.post("/house/getCities", {
-      headers: { "Content-Type": "application/json" },
-    });
-    if (res.status === 200) {
-      dispatch({
-        type: "CITIES",
-        payload: res.data,
-      });
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
 export const getOneListingRoomsDetails = (id) => async (dispatch) => {
   try {
     let listingId = { id: id };
