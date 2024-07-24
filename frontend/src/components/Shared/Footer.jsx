@@ -1,76 +1,81 @@
 import facebookIcon from "../../assets/basicIcon/facebookIcon.svg";
 import linkedinIcon from "../../assets/basicIcon/linkedinIcon.svg";
+import { useSelector } from "react-redux";
 
-const Footer = () => {
+const Footer=() => {
+  const user=useSelector((state) => state.user.userDetails);
   return (
     <footer className=" py-12 bg-[#f7f7f7] border-t border-[#dddddd] text-sm text-[#222222] relative bottom-0 z-[20]">
       <section className=" grid grid-cols-2 md:grid-cols-4 gap-8 justify-between max-w-screen-2xl mx-auto px-10">
         <div className="flex flex-col gap-4 opacity-80">
-           <a href="mailto:support@hotelbox.in">
+          <a href="mailto:support@hotelbox.in">
             <h6 className="font-semibold">Support</h6>
-          </a> 
+          </a>
           <a href="mailto:info@hotelbox.in">
             <p>Help Center</p>
           </a>
+
+
+
+        </div>
+        <div className="flex flex-col gap-4 opacity-80">
+          <h6 className="font-semibold">Top Brands</h6>
+
+          <p>WelcomHotel</p>
+
+
+          <p>Fairmont</p>
+
+
+          <p>Radisson</p>
+
+
+          <p>Lemon Tree</p>
+
+
+          <p>Marriot</p>
+
+
+          <p>The Lalit</p>
+
+        </div>
+
+        <div className="flex flex-col gap-4 opacity-80">
+          <h6 className="font-semibold">Popular Cities</h6>
+          <a href="/?category=gujrat">
+            <p>Gujrat</p>
+          </a>
+          <a href="/?category=udaipur">
+            <p>Udaipur</p>
+          </a>
+          <a href="/?category=jaipur">
+            <p>Jaipur</p>
+          </a>
+          <a href="/?category=goa">
+            <p>Goa</p>
+          </a>
+          <a href="/?category=jodhpur">
+            <p>Jodhpur</p>
+          </a>
+          <a href="/?category=mumbai">
+            <p>Mumbai</p>
+          </a>
+        </div>
+        <div className="flex flex-col gap-4 opacity-80">
+          <h6 className="font-semibold">Reach Us</h6>
+          {user?.emailId.includes('hotelbox')&&
+            <a href="http://localhost:3001/host/homes">
+              <p>Upload Property</p>
+            </a>
+          }
           <a href="tel:+91 8141488868">
             <p>+91 8141488868</p>
           </a>
           <a href="#">
             <p>Address: </p>
             <p>LS No.122, Rajpath Rangoli Rd,
-            near Shivalik Villa, beside Aangan Farm Cross Road, Ambli, Ahmedabad, Gujarat 380058</p>
+              near Shivalik Villa, beside Aangan Farm Cross Road, Ambli, Ahmedabad, Gujarat 380058</p>
           </a>
-         
-          
-        </div>
-        <div className="flex flex-col gap-4 opacity-80">
-          <h6 className="font-semibold">Top Brands</h6>
-          
-          <p>WelcomHotel</p>
-          
-         
-          <p>Fairmont</p>
-           
-          
-          <p>Radisson</p>
-            
-            
-          <p>Lemon Tree</p>
-            
-           
-          <p>Marriot</p>
-            
-            
-          <p>The Lalit</p>
-            
-        </div>
-        <div className="flex flex-col gap-4 opacity-80">
-          <h6 className="font-semibold">Hosting</h6>
-          <a href="http://localhost:3001/host/homes">
-    <p>Upload Property</p>
-</a>
-
-</div>
-<div className="flex flex-col gap-4 opacity-80">
-  <h6 className="font-semibold">Popular Cities</h6>
-  <a href="/?category=gujrat">
-  <p>Gujrat</p>
-  </a>
-  <a href="/?category=udaipur">
-  <p>Udaipur</p>
-</a>
-<a href="/?category=jaipur">
-    <p>Jaipur</p>
-</a>
-<a href="/?category=goa">
-    <p>Goa</p>
-</a>
-<a href="/?category=jodhpur">
-    <p>Jodhpur</p>
-</a>
-<a href="/?category=mumbai">
-    <p>Mumbai</p>
-</a>
         </div>
       </section>
       <hr className="bg-[#f7f7f7] mt-10 mb-6" />
