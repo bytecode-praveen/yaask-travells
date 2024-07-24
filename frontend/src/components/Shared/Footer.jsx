@@ -64,7 +64,7 @@ const Footer=() => {
         <div className="flex flex-col gap-4 opacity-80">
           <h6 className="font-semibold">Reach Us</h6>
           {user?.emailId.includes('hotelbox')&&
-            <a href="http://localhost:3001/host/homes">
+            <a href="/host/homes">
               <p>Upload Property</p>
             </a>
           }
