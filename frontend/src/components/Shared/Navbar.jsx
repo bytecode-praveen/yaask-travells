@@ -106,7 +106,7 @@ const Navbar = () => {
               // if user is in dahsboard
               <div>{inUserDashboard && <MiniNavbar />} </div>
             ) : (
-              <div className="mx-auto lg:block hidden">
+              <div className="mx-auto lg:block hidden" style={{display: 'flex'}}>
                 <div className="border-[1px] border-[#dddddd] rounded-full px-3 py-2 flex items-center shadow hover:shadow-md transition-all cursor-pointer">
                   <input
                     type="search"
@@ -124,6 +124,13 @@ const Navbar = () => {
                   <div className="bg-[#FFB724] rounded-full p-2"  onClick={handleSearch}>
                     <img src={searchIcon} alt="Search hotel" className="w-4" />
                   </div>
+                </div>
+                <div >
+                
+                  <select className="border-[1px] border-[#dddddd] rounded-full px-3 py-2 flex items-center shadow hover:shadow-md transition-all cursor-pointer">
+                    <option value="Select City">Cities</option>
+                    <option value="otherOption">Other option</option>
+                  </select>
                 </div>
               </div>
             )}
