@@ -47,40 +47,28 @@ const Footer = () => {
         <div className="flex flex-col gap-4 opacity-80">
           <h6 className="font-semibold">Hosting</h6>
           <a href="http://localhost:3001/host/homes">
-    <p>Rent Your Place</p>
+    <p>Upload Property</p>
 </a>
-<a href="http://localhost:3001/host/homes">
-    <p>MotelCover for Hosts</p>
-</a>
-<a href="http://localhost:3001/host/homes">
-    <p>Explore hosting resources</p>
-</a>
-<a href="http://localhost:3001/host/homes">
-    <p>Visit our community forum</p>
-</a>
-<a href="http://localhost:3001/host/homes">
-    <p>How to host responsibly</p>
-</a>
-<a href="http://localhost:3001/host/homes">
-    <p>Motel friendly apartments</p>
-</a>
+
 </div>
 <div className="flex flex-col gap-4 opacity-80">
   <h6 className="font-semibold">Popular Cities</h6>
+  <a href="/?category=gujrat">
   <p>Gujrat</p>
-  <a href="http://localhost:3001/host/homes">
+  </a>
+  <a href="/?category=udaipur">
   <p>Udaipur</p>
 </a>
-<a href="http://localhost:3001/host/homes">
+<a href="/?category=jaipur">
     <p>Jaipur</p>
 </a>
-<a href="http://localhost:3001/host/homes">
+<a href="/?category=goa">
     <p>Goa</p>
 </a>
-<a href="http://localhost:3001/host/homes">
+<a href="/?category=jodhpur">
     <p>Jodhpur</p>
 </a>
-<a href="http://localhost:3001/host/homes">
+<a href="/?category=mumbai">
     <p>Mumbai</p>
 </a>
         </div>
