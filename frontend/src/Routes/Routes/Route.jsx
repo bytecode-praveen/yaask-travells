@@ -14,21 +14,7 @@ import ListHouseStepOne from "../../Pages/ListingHouseStepOne/ListHouseStepOne";
 import ListHouseStepOneStructure from "../../Pages/ListingHouseStepOne/ListHouseStepOneStructure";
 import ListHouseStepOnePlacetype from "../../Pages/ListingHouseStepOne/ListHouseStepOnePlacetype";
 import { FadeLoader } from "react-spinners";
-// import ListingHouseStepOneAddress from "../../Pages/ListingHouseStepOne/ListingHouseStepOneAddress";
-// import ListingHouseStepOneFloorPlan from "../../Pages/ListingHouseStepOne/ListingHouseStepOneFloorPlan";
-// import StepTwoOverview from "../../Pages/ListingHouseStepTwo/StepTwoOverview";
-// import Amenities from "../../Pages/ListingHouseStepTwo/Amenities";
-// import ListingHousePhotos from "../../Pages/ListingHouseStepTwo/ListingHousePhotos";
-// import HouseTitle from "../../Pages/ListingHouseStepTwo/HouseTitle";
-// import Highlight from "../../Pages/ListingHouseStepTwo/Highlight";
-// import Description from "../../Pages/ListingHouseStepTwo/Description";
-// import FinalStepOverview from "../../Pages/ListingHouseFinalStep/FinalStepOverview";
-// import Visibility from "../../Pages/ListingHouseFinalStep/Visibility";
-// import Pricing from "../../Pages/ListingHouseFinalStep/Pricing";
-// import Legal from "../../Pages/ListingHouseFinalStep/Legal";
-// import Receipt from "../../Pages/ListingHouseFinalStep/Receipt";
-// import Thankyou from "../../Pages/ListingHouseFinalStep/Thankyou";
-// import Home from "../../Pages/Home"; = lazy (() => import)
+
 const ListingHouseStepOneAddress = lazy(() =>
   import("../../Pages/ListingHouseStepOne/ListingHouseStepOneAddress")
 );
@@ -49,7 +35,6 @@ const HouseTitle = lazy(() =>
 );
 const Home = lazy(() => import("../../Pages/Home"));
 const ListingDetails = lazy(() => import("../../Pages/ListingDetails"));
-// import Book from "../../Pages/Book";
 const Book = lazy(() => import("../../Pages/Book"));
 const PaymentConfirmed = lazy(() => import("../../Pages/PaymentConfirmed"));
 const Thankyou = lazy(() =>
@@ -70,7 +55,6 @@ const Description = lazy(() =>
 const Highlight = lazy(() =>
   import("../../Pages/ListingHouseStepTwo/Highlight")
 );
-// import PaymentConfirmed from "../../Pages/PaymentConfirmed";
 
 const router = createBrowserRouter([
   {

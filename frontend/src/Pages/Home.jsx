@@ -30,6 +30,14 @@ const Home = () => {
     },
   });
 
+  const allCities = useQuery({
+    queryKey: ["allCities"],
+    queryFn: async () => {
+      const res = await axios.get(`${API}house/getCities`);
+      return res.data;
+    },
+  });
+
   const handleScrollTracking = () => {
     const scrollPosition = window.scrollY;
     // checking if we scroll from top
@@ -86,12 +94,11 @@ const Home = () => {
         {/* categories */}
         <Category styleGrid={"md:col-span-8 lg:col-span-12"} />
         {/* taxes toggle card */}
-        {/* <PriceWithTaxCard
-          style={
-            " md:col-span-4 lg:col-span-3 border-[#e2e2e2] border rounded-xl h-14 md:flex justify-around items-center hidden"
-          }
-          setShowBeforeTaxPrice={setShowBeforeTaxPrice}
-        /> */}
+        { <select name="selectedFruit">
+        <option value="apple">Apple</option>
+        <option value="banana">Banana</option>
+        <option value="orange">Orange</option>
+      </select>}
       </section>
       {/* house listing data section */}
       {/* if sub cat listing data is loading else */}
