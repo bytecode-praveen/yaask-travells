@@ -40,6 +40,10 @@ const userReducer = (state = initialState, { type, payload }) => {
                 userDetails: payload.updatedUserDetails,
 
             }
+        case "GET_AGENTS":
+            return {
+                agents: payload
+            }
 
         default:
             return state

@@ -9,7 +9,7 @@ import motelLogo from "../../assets/Travel_Logo.png";
 import userProfile from "../../assets/basicIcon/user-profile.png";
 import searchIcon from "../../assets/basicIcon/search.svg";
 import house from "../../assets/basicIcon/houseWhite.png";
-import SelectCities from "../Home/SelectCities";
+// import SelectCities from "../Home/SelectCities";
 
 const Navbar=() => {
   const user=useSelector((state) => state.user.userDetails);
@@ -157,7 +157,7 @@ const Navbar=() => {
                 {/* user bar */}
                 <div className="flex justify-end items-center">
                   <div className=" px-2">
-                    <SelectCities></SelectCities>
+                    {/* <SelectCities></SelectCities> */}
                   </div>
                   <div
                     className="border-[1px] border-[#dddddd] rounded-full py-1 px-2 flex flex-row gap-3 hover:shadow-md transition-all cursor-pointer relative"
@@ -248,7 +248,12 @@ const Navbar=() => {
                           {/* <Link className="font-medium">Trips</Link> */}
                           {/* <Link className="font-medium">Wishlists</Link> */}
                           <hr className="h-[1.5px] bg-[#dddddd] my-1" />
-                          <Link to={"/host/homes"}>Rent Your Place</Link>
+                          {user?.emailId?.split('@')[1]=='hotelbox.in' && 
+                              <Link to={"/host/homes"}>Rent Your Place</Link>
+                          }
+                           {user?.emailId?.split('@')[1]=='hotelbox.in' && 
+                              <Link to={"/agents"}>Agents List</Link>
+                          }
                           <Link to={`/users/show/${user._id}`}>Account <p className="font-light">{user.emailId}</p></Link>
                           <hr className="h-[1.5px] bg-[#dddddd] my-1" />
                           <Link>Help</Link>

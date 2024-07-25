@@ -381,3 +381,18 @@ exports.userToHost = async (req, res) => {
         console.log(error)
     }
 }
+exports.getAgents = async (req, res) => {
+    try {
+        const agents = await User.find({})
+        const response = {
+            agents: agents,
+            succeed: 1
+        }
+        console.log(response)
+        res.status(200).send(response)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+

@@ -89,3 +89,18 @@ export const userLogOut = () => async (dispatch) => {
     console.log(response)
     dispatch({ type: "USER_LOG_OUT" })
 }
+
+export const getAgents = () => async (dispatch) => {
+    try {
+      const res = await api.get("/auth/agents");
+      console.log(res)
+      if (res.status === 200) {
+        dispatch({
+          type: "GET_AGENTS",
+          payload: res.data,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };

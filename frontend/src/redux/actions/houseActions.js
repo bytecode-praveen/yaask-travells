@@ -36,6 +36,7 @@ export const getOneListingRoomsDetails = (id) => async (dispatch) => {
   }
 };
 
+
 export const createNewHouse =
   (
     structure,

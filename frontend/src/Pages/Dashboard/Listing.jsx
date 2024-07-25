@@ -19,13 +19,13 @@ const Listing = () => {
           <h3 className=" text-xl text-[#222222] font-medium">
             {allListingsData.length} listings
           </h3>
-          <Link
+          {/* <Link
             to="/become-a-host"
             className=" flex flex-row items-center gap-[6px] text-sm font-medium px-4 py-3 bg-white hover:bg-[#f1f1f1] border-[#b0b0b0] border rounded-lg transition duration-200 ease-in"
           >
             <HiPlus size={16} />
             Create listing
-          </Link>
+          </Link> */}
         </div>
         {/* filtering options */}
         <div className=" flex flex-row gap-5">

@@ -6,6 +6,7 @@ import MainLayout from "../../layout/MainLayout";
 import UserProfile from "../../Pages/UserProfile/UserProfile";
 import Overview from "../../Pages/Dashboard/Overview";
 import MotelYourHome from "../../Pages/MotelYourHome";
+import Agents from "../../Pages/Agents";
 import Reservations from "../../Pages/Dashboard/Reservations";
 import Listing from "../../Pages/Dashboard/Listing";
 import CreateNewListLayout from "../../layout/CreateNewListLayout";
@@ -127,6 +128,10 @@ const router = createBrowserRouter([
       {
         path: "/host/homes",
         element: <MotelYourHome />,
+      },
+      {
+        path: "/agents",
+        element: <Agents />,
       },
       {
         path: "/payment-confirmed",

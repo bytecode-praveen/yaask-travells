@@ -56,7 +56,7 @@ const ListHouseStepOneStructure = () => {
         <StructureCard
           style={structureCardStyle}
           Img={MdOutlineApartment}
-          name={"Apartment"}
+          name={"Resort"}
           onClick={handleStoreCardData}
           storedCardData={storedCardData}
           svgSize={svgSize}

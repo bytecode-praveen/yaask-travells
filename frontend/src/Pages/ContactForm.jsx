@@ -16,10 +16,10 @@ export const ContactUs = () => {
 
         // Send email to the admin
         emailjs
-            .send('service_pifdyyh', 'template_8e0ov6p', {
+            .send('service_gwh3ed6', 'template_1snpdxb', {
                 user_email: 'support@hotelbox.in', // Admin email
                 message: `Query from ${clientName}: ${form.current['message'].value}`,
-            }, { publicKey: 'W7JLonZhnMYOR4Vb7' })
+            }, { publicKey: 'P7gtl5wQi47djtYx7' })
             .then(() => {
                 //console.log('Email sent to admin!');
                 setSentSuccessfully(true)

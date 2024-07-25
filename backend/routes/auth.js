@@ -1,5 +1,5 @@
 const express = require("express");
-const { signUp, checkEmail, logIn, refreshToken, postUser, logOut, getUserDetails, userProfileDetails, userProfileAbout, uploadProfileImage, userToHost, addWishlist } = require("../controllers/authController.js");
+const { signUp, checkEmail, logIn, refreshToken, postUser, logOut, getUserDetails, userProfileDetails, userProfileAbout, uploadProfileImage, userToHost , getAgents} = require("../controllers/authController.js");
 const { verifyJwtToken } = require("../middleware/jwt.js");
 const router = express.Router();
 
@@ -12,6 +12,7 @@ router.post("/get_user_details", verifyJwtToken, getUserDetails)
 router.post("/post", verifyJwtToken, postUser)
 router.post("/uploadimage", verifyJwtToken, uploadProfileImage)
 router.post("/become_a_host", verifyJwtToken, userToHost)
+router.get("/agents", verifyJwtToken, getAgents)
 
 router.post("/refresh_token", refreshToken)
 router.post("/check_email", checkEmail)

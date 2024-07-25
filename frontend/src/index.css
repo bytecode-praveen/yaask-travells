@@ -28,3 +28,19 @@ p {
   overflow: hidden;
 }
 
+.agent-list {
+  list-style: none;
+  padding: 0;
+}
+
+.agent-item {
+  background: #fff;
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.agent-item p {
+  margin: 5px 0;
+}
