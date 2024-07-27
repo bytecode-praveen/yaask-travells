@@ -30,6 +30,19 @@ const Navbar=() => {
   const dispatch=useDispatch();
   const [searchQuery,setSearchQuery]=useState('');
 
+  const useQuery = () => {
+    return new URLSearchParams(location.search);
+  };
+
+  const query = useQuery();
+
+  useEffect(() => {
+    if (query.get('signup') === 'true') {
+      setShowUserMenu(false);
+      setPopup(true);
+    }
+  }, [query]);
+
   const handleLogout=() => {
     dispatch(userLogOut());
   };

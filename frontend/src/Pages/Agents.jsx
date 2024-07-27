@@ -26,7 +26,7 @@ const Agents = () => {
     <main className="max-w-screen-xl xl:px-12 mx-auto py-7 px-5 sm:px-16 md:px-8">
       <section className=" flex flex-col-reverse md:flex-col gap-7">
       <ul className="agent-list">
-        {data?.agents.map((agent, index) => (
+        {data?.agents?.map((agent, index) => (
           <li key={index} className="agent-item">
             <p><strong>Email:</strong> {agent.emailId}</p>
             <p><strong>PAN:</strong> {agent.panNo ? agent.panNo : 'N/A'}</p>

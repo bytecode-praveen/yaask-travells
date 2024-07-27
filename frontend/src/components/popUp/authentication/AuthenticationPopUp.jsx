@@ -1,5 +1,7 @@
 // import PropTypes from "prop-types";
 import { useState, useEffect, useRef } from "react";
+import { Link,useLocation,useNavigate } from "react-router-dom";
+
 import closeIcon from "../../../assets/basicIcon/closeIcon.svg";
 import backIcon from "../../../assets/basicIcon/backIcon.png";
 
@@ -17,12 +19,24 @@ const AuthenticationPopUp = ({ popup, setPopup }) => {
   const [loginEmail, setLoginEmail] = useState(null);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
   const popUpRef = useRef(null);
+  const navigate=useNavigate();
+  const location=useLocation();
 
   const handleCloseLoginPopup = () => {
     setShowLoginPopup(false);
     setShowCreateUserPopup(false);
     setDefaultPopup(true);
+    setPopup(false);
+    const params = new URLSearchParams(location.search);
+    params.delete('signup');
+    navigate({ search: params.toString() });
   };
+
+  const useQuery = () => {
+    return new URLSearchParams(location.search);
+  };
+
+  const query = useQuery();
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -32,6 +46,9 @@ const AuthenticationPopUp = ({ popup, setPopup }) => {
         setShowLoginPopup(false);
         setProfilePopup(false);
         setDefaultPopup(true);
+        const params = new URLSearchParams(location.search);
+        params.delete('signup');
+        navigate({ search: params.toString() });
       }
     };
     document.addEventListener("mousedown", handleOutsideClick);
@@ -53,7 +70,7 @@ const AuthenticationPopUp = ({ popup, setPopup }) => {
                 ? "h-[80vh]"
                 : "h-[80vh] popup__container"
             } w-[45vw] bg-[#ffffff] shadow-2xl rounded-xl overflow-hidden`}
-            style={{height:'65vh', width: '60vh', left:'calc(50% - (20vh) + 5px)'}}
+            style={{height:'65vh', width: '65vh', left:'calc(50% - (25vh) + 5px)'}}
           >
             {/* pop-up navbar */}
             <div className=" flex items-center w-full py-4 border-b-[1px] px-8 sticky top-0 bg-[#ffffff]">
@@ -63,7 +80,7 @@ const AuthenticationPopUp = ({ popup, setPopup }) => {
                   alt="close icon"
                   className="w-8 hover:bg-[#f1f1f1] transition-colors rounded-full p-2 cursor-pointer"
                   onClick={() => {
-                    setPopup(false);
+                    handleCloseLoginPopup();
                   }}
                 />
               ) : (

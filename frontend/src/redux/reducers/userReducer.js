@@ -42,6 +42,7 @@ const userReducer = (state = initialState, { type, payload }) => {
             }
         case "GET_AGENTS":
             return {
+                ...state,
                 agents: payload
             }
 
